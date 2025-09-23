@@ -11,7 +11,7 @@ import MainLayout from './layouts/MainLayout.jsx';
 import Home from './pages/Home.jsx';
 import About from './pages/About.jsx';
 import Login from './pages/Login.jsx';
-
+// import TextTest from './components/Gemini/TextTest.jsx';
 // Define the routes
 const router = createBrowserRouter([
   {
@@ -30,6 +30,10 @@ const router = createBrowserRouter([
         path: "/login",
         element: <Login />,
       },
+      // {
+      //   path: "/text",
+      //   element: <TextTest></TextTest>,
+      // },
     ]
   },
 ]);
