@@ -1,22 +1,43 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import LedgerUpload from './components/LedgerUpload'; // Import the component
-import './index.css'; // Import your Tailwind styles
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+import './index.css'
 
-// This is the root layout of your application
-function AppLayout() {
-  return (
-    <div data-theme="cupcake" className="bg-base-200 min-h-screen flex items-center justify-center p-4">
-      <LedgerUpload />
-    </div>
-  );
-}
+// Import Layout and Pages
+import MainLayout from './layouts/MainLayout.jsx';
+import Home from './pages/Home.jsx';
+import About from './pages/About.jsx';
+import Login from './pages/Login.jsx';
 
-// Render the AppLayout component to the DOM
+// Define the routes
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <MainLayout />, // The layout wraps all pages
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+    ]
+  },
+]);
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <AppLayout />
+    <div data-theme="cupcake">
+      <RouterProvider router={router} />
+    </div>
   </React.StrictMode>,
-);
-
-export default AppLayout;
+)
